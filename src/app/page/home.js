@@ -9,7 +9,8 @@ import moment from 'moment'
 import {SignIn, logout} from '../../redux/actions/auth'
 // import action on redux
 import { homeGet, homeCountKelas, homeCountJurusan, homeCountTanggal } from "../../redux/actions/home";
-
+import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
 
 //==========================================================
@@ -17,6 +18,8 @@ import { homeGet, homeCountKelas, homeCountJurusan, homeCountTanggal } from "../
 let HomePage = (props) => {
     let CanvasJSChart = CanvasJSReact.CanvasJSChart;
     let UseState = useState
+    let History = useHistory
+    let history = History()
 
     // state
     let [dateFrom, setDateFrom] = UseState(moment(Date()).format('YYYY-MM-DD'))
@@ -26,6 +29,36 @@ let HomePage = (props) => {
     let [chartKelas, setChartKelas1] = UseState([])
     let [chartTanggal, setChartTanggal1] = UseState([])
     let [chartJurusan, setChartJurusan1] = UseState([])
+
+
+
+    let Logout = (event) => {
+      event.preventDefault();
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You will exit this page",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes",
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            title: "Success",
+            text: "Logout Success",
+            icon: "success",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.value) {
+              props.logout();
+              history.push("/");
+            }
+          });
+        }
+      });
+    };
     
     // Did Moun
     useEffect(() => {
@@ -39,7 +72,9 @@ let HomePage = (props) => {
       getCountTanggal()
 
      
-      console.log(props)
+      if(props.auth.data.username === undefined){
+        history.push('/')
+      }
     }, []);
 
 
@@ -213,9 +248,9 @@ let HomePage = (props) => {
          {/* navbar */}
          <div style={{ height: 40, width: '100%', position: 'absolute', zIndex: -2}}>
                 <Container>
-                    <div style={{marginLeft: 'auto',width: 212, display:'flex', marginTop: 2}}>
+                    <div style={{marginLeft: 'auto',width: 122, display:'flex', marginTop: 2}}>
                         <p style={{fontWeight: 'bold', marginTop: 12}}>Welcome, {props.auth.data.username}</p>
-                        <Button style={{marginLeft:9}} color="primary">Logout</Button>
+                       
                     </div>
                 </Container>
             </div>
@@ -244,6 +279,7 @@ let HomePage = (props) => {
                     </div>
                     <div className={styles.bgMenu}>
                     <Button onClick={handleFilter} color="info">Accept</Button>
+                    <a href="#" onClick={Logout} style={{marginLeft:9, position: 'absolute', zIndex: 2}} className="btn btn-danger">Logout</a>
                     </div>
                 </Container>
             </div>
