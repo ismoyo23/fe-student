@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Montserrat:ital,wght@0,300;0,700;1,400&family=Poppins:wght@100&display=swap");
+.titleAdmin {
+  font-family: Montserrat;
+  font-weight: bold;
+  color: white;
+
+  font-size: 20px;
+}
+.bgMenu {
+  margin-top: 16px;
+}
+.menu {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  margin-left: 4px;
+  font-weight: bold;
+}
+
+.menu:hover {
+  color: white;
+  width: 50px;
+  height: 30px;
+  text-decoration: none;
+}
+
+.headerAdmin {
+  display: flex;
+  margin-top: 11px;
+  width: 100%;
+  margin-bottom: 21px;
+}
+
+.sideBarClose {
+  animation-duration: 3s;
+  margin-left: -187px !important;
+}
+
+.sideBarOpen {
+  animation-duration: 3s;
+  margin-left: 0px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .sideBar {
+    margin-left: -200px !important;
+    position: fixed;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .rowCard {
+    width: 90%;
+    margin-left: 90px !important;
+    margin-right: 90px !important;
+  }
+
+  .titleAdmin {
+    margin-left: -23px;
+    opacity: 0;
+  }
+
+  .sideBarClose {
+    animation-duration: 3s;
+    margin-left: -193px;
+  }
+
+  .sideBarOpen {
+    animation-duration: 3s;
+    margin-left: 0px !important;
+  }
+}
