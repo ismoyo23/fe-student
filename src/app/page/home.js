@@ -317,7 +317,7 @@ let HomePage = (props) => {
                     </Row>
 
 
-                    <div style={{height: 400, marginTop: 29}}>
+                    <div style={{height: 400, marginTop: 29, overflow: 'scroll'}}>
                         <Table hover >
                             <thead>
                                 <tr>
