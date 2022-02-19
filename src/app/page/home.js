@@ -325,6 +325,7 @@ let HomePage = (props) => {
                                 <th>Nama siswa</th>
                                 <th>Kelas</th>
                                 <th>Jurusan</th>
+                                <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -336,6 +337,7 @@ let HomePage = (props) => {
                                     <td>{i.nama}</td>
                                     <td>{i.nama_kelas}</td>
                                     <td>{i.nama_jurusan}</td>
+                                    <td>{i.status}</td>
                                     </tr>
                                 );
                               }

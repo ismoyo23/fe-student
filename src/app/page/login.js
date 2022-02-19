@@ -32,18 +32,29 @@ let HandleLogin = (event) => {
     password: password,
     env: process.env.REACT_APP_URL
   }
-  props.SignIn(data)
-  Swal.fire({
-    title: "Welcome",
-    text: `Login success, click ok`,
-    icon: "success",
-    confirmButtonColor: "#3085d6",
-    confirmButtonText: "Yes",
-  }).then((result) => {
-    if (result.value) {
-      history.push('/home')
-    }
-  });
+  props.SignIn(data).then((res)=>{
+   
+      Swal.fire({
+        title: "Welcome",
+        text: `Login success, click ok`,
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Yes",
+      }).then((result) => {
+        if (result.value) {
+          history.push('/home')
+        }
+      });
+    
+  }).catch((error)=>{
+    Swal.fire({
+      icon: 'error',
+      title: 'Wrong',
+      text: 'Password or username wrong, try again',
+     
+    })
+  })
+  
   
 
 }
