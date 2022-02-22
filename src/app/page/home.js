@@ -140,7 +140,7 @@ let HomePage = (props) => {
         let d = props.action.payload.data.data
         for (let i = 0; i < d.length; i++) {
           store.push({
-            lable: d[i].nama_kelas,
+            label: 'kelas: ' + d[i].nama_kelas,
             y: d[i].count
           })
         }
